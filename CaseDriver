@@ -1,0 +1,16 @@
+package com.utils;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class CaseDriver {
+	
+	WebDriver driver;
+	public WebDriver setup() {
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/automation-practice-form");
+		return driver;
+	}
+
+}
