@@ -1,0 +1,152 @@
+package com.pom;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+public class RegisterPage {
+	WebDriver driver; 
+    public RegisterPage(WebDriver driver) {
+    	this.driver = driver;
+    	PageFactory.initElements(driver, this);
+    }
+
+	@FindBy(id = "firstName")
+	WebElement FirstName;
+
+	@FindBy(id = "lastName")
+	WebElement SecondName;
+
+	@FindBy(id = "userEmail")
+	WebElement Email;
+
+	@FindBy(xpath = "//*[@id='genterWrapper']/div[2]/div[2]")
+	WebElement Button;
+
+	@FindBy(id = "userNumber")
+	WebElement MobileNo;
+
+	@FindBy(id = "dateOfBirthInput")
+	WebElement DOB;
+
+	@FindBy(css = ".react-datepicker__year-select")
+	WebElement yearDropdown;
+
+	@FindBy(css = ".react-datepicker__day--013")
+	WebElement day13;
+
+	@FindBy(id = "subjectsInput")
+	WebElement Subjects;
+
+	@FindBy(xpath = "//div[@id='react-select-2-option-0']")
+	WebElement Sub;
+
+	@FindBy(id = "hobbies-checkbox-3")
+	WebElement Hobbies;
+
+	@FindBy(id = "uploadPicture")
+	WebElement PictureIn;
+
+	@FindBy(id = "currentAddress")
+	WebElement CurAddress;
+
+	@FindBy(id = "react-select-3-input")
+	WebElement state1;
+
+	@FindBy(id = "react-select-3-option-2")
+	WebElement Haryana;
+
+	@FindBy(id = "submit")
+	WebElement Submit;
+
+	@FindBy(id = "react-select-4-input")
+	WebElement Citygive;
+
+	@FindBy(id = "react-select-4-option-0")
+	WebElement City;
+
+	@FindBy(id = "closeLargeModal")
+	WebElement Close;
+
+	public void EnterFName(String FName) {
+		FirstName.sendKeys(FName);
+	}
+
+	public void EnterSName(String SName) {
+		SecondName.sendKeys(SName);
+	}
+
+	public void UEmail(String email) {
+		Email.sendKeys(email);
+	}
+
+	public void Rbutton() {
+		Button.click();
+	}
+
+	public void MNo(String Number) {
+		MobileNo.sendKeys(Number);
+	}
+
+	public void EnterDOB() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", DOB);
+		js.executeScript("arguments[0].click();", DOB);
+	}
+
+	public void selectYear(String year) {
+		Select select = new Select(yearDropdown);
+		select.selectByVisibleText(year);
+	}
+
+	public void selectDay13() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", day13);
+	}
+
+	public void EnterSubject(String Subject) {
+		 Subjects.sendKeys(Subject); 
+		 }
+
+	public void Maths() {
+		Sub.click();
+	}
+
+	public void ClickHobby() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", Hobbies);
+	}
+
+	public void UploadImage(String imagePath) {
+		PictureIn.sendKeys(imagePath);
+	}
+
+	public void Address(String address) {
+		CurAddress.sendKeys(address);
+	}
+
+	public void State(String State) {
+		state1.sendKeys(State);
+		Haryana.click();
+	}
+
+	public void city(String CityName) {
+		Citygive.sendKeys(CityName);
+		City.click();
+	}
+
+	public void ClickSubmit() {
+		Submit.click();
+	}
+
+	public void ClickClose() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", Close);
+		js.executeScript("arguments[0].click();", Close);
+		Close.click();
+	}
+
+}
